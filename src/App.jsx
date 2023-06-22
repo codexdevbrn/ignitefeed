@@ -3,6 +3,8 @@ import { Sidebar } from "./components/Sidebar/Sidebar";
 import { Post } from "./components/Post/Post";
 import styles from './App.module.css'
 
+import { PostArray } from "./utils/Posts";
+
 export function App() {
 
   return (
@@ -11,7 +13,14 @@ export function App() {
      <div className={styles.wrapper}>
       <Sidebar />
       <main>
-        <Post />
+      {PostArray.map(post => {
+        return (<Post
+        key={post.id}
+          author={post.author}
+          content={post.content}
+          publishedAt={post.publishedAt}
+        />)
+      })}
       </main>
      </div>
     </>
